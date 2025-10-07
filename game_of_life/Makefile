@@ -1,30 +1,19 @@
-# Компилятор
-CC = clang
-
-# Исходные файлы
-SOURCES = start.c game.c app.c
-
-# Флаги компиляции
-CFLAGS = -Wall -Wextra
-LIBS = -lSDL2
-
-# Имя выходного файла
 OUTPUT = a.out
 
-# Основная цель
 all: build
 
-# Сборка приложения
 build:
-	$(CC) $(SOURCES) $(LIBS) -o $(OUTPUT)
+	clang start.c game.c app.c -lSDL2 -o $(OUTPUT)
 
-# Запуск приложения (сначала собирает, потом запускает)
+gen_ir:
+	clang -S -emit-llvm start.c -o ./IRGen/start.ll
+	clang -S -emit-llvm game.c -o ./IRGen/game.ll
+	clang -S -emit-llvm app.c -o ./IRGen/app.ll
+
 run: build
 	./$(OUTPUT)
 
-# Очистка собранных файлов
 clean:
 	rm -f $(OUTPUT)
 
-# Псевдонимы
 .PHONY: all build run clean
