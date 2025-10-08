@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#define WINDOW_H 600
-#define WINDOW_W 800
+#define WINDOW_H 100
+#define WINDOW_W 150
 #define FRAME_TICKS 50
 
 void sim_init();

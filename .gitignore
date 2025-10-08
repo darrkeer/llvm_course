@@ -39,3 +39,4 @@
 
 # debug information files
 *.dwo
+ir_pass/app
